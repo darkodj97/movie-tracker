@@ -7,12 +7,14 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
     try {
       const formData = new FormData();
       formData.append("username", username);
@@ -22,6 +24,8 @@ export default function Login() {
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid username or password");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,6 +44,11 @@ export default function Login() {
         {error && (
           <div className="bg-red-600 text-white px-4 py-3 rounded mb-6">
             {error}
+          </div>
+        )}
+        {loading && (
+          <div className="bg-zinc-800 text-zinc-300 px-4 py-3 rounded mb-6 text-center">
+            🔄 Connecting to server, please wait...
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -61,9 +70,10 @@ export default function Login() {
           />
           <button
             type="submit"
-            className="w-full py-4 bg-netflix-red hover:bg-red-700 text-white font-bold rounded text-lg transition duration-200"
+            disabled={loading}
+            className="w-full py-4 bg-netflix-red hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded text-lg transition duration-200"
           >
-            Sign In
+            {loading ? "Connecting..." : "Sign In"}
           </button>
         </form>
         <p className="text-zinc-400 mt-6">

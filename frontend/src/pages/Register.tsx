@@ -8,6 +8,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const validate = (): string | null => {
@@ -25,6 +26,7 @@ export default function Register() {
       setError(validationError);
       return;
     }
+    setLoading(true);
     try {
       await axios.post("https://movie-tracker-backend-acc8.onrender.com/users/register", {
         username,
@@ -34,6 +36,8 @@ export default function Register() {
       navigate("/login");
     } catch (err: any) {
       setError(err.response?.data?.detail || "Registration error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -52,6 +56,11 @@ export default function Register() {
         {error && (
           <div className="bg-red-600 text-white px-4 py-3 rounded mb-6">
             {error}
+          </div>
+        )}
+        {loading && (
+          <div className="bg-zinc-800 text-zinc-300 px-4 py-3 rounded mb-6 text-center">
+            🔄 Connecting to server, please wait...
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -89,9 +98,10 @@ export default function Register() {
           />
           <button
             type="submit"
-            className="w-full py-4 bg-netflix-red hover:bg-red-700 text-white font-bold rounded text-lg transition duration-200"
+            disabled={loading}
+            className="w-full py-4 bg-netflix-red hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded text-lg transition duration-200"
           >
-            Sign Up
+            {loading ? "Connecting..." : "Sign Up"}
           </button>
         </form>
         <p className="text-zinc-400 mt-6">
