@@ -26,7 +26,7 @@ export default function Register() {
       return;
     }
     try {
-      await axios.post("hhttps://movie-tracker-backend-acc8.onrender.com/users/register", {
+      await axios.post("https://movie-tracker-backend-acc8.onrender.com/users/register", {
         username,
         email,
         password,
