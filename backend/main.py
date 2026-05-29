@@ -10,11 +10,7 @@ app = FastAPI(title="Movie Tracker API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-    "http://localhost:3000",
-    "https://movie-tracker-git-main-darko-s-projects2.vercel.app",
-    "https://movie-tracker-ddpol8qs3-darko-s-projects2.vercel.app",
-],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
