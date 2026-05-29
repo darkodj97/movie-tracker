@@ -37,6 +37,8 @@ A full-stack movie tracking application where users can search for movies, track
 
 ## 🚀 Running Locally
 
+> **Note**: To run locally, update all API URLs in `frontend/src` files from the production Render URL to `http://localhost:8000`. Also update the database URL in `backend/database.py` to your local PostgreSQL instance.
+
 ### Backend
 
 ```bash
