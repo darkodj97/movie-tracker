@@ -34,7 +34,7 @@ export default function Dashboard() {
 
   const fetchMovies = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/movies/", {
+      const response = await axios.get("hhttps://movie-tracker-backend-acc8.onrender.com/movies/", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMovies(response.data);

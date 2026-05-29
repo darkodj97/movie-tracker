@@ -36,7 +36,7 @@ export default function MovieDetail() {
 
   const fetchMovie = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/movies/${id}`, {
+      const response = await axios.get(`hhttps://movie-tracker-backend-acc8.onrender.com/movies/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMovie(response.data);
@@ -51,7 +51,7 @@ export default function MovieDetail() {
 
   const fetchCast = async (tmdbId: number) => {
     try {
-      const response = await axios.get(`http://localhost:8000/movies/cast/${tmdbId}`, {
+      const response = await axios.get(`hhttps://movie-tracker-backend-acc8.onrender.com/movies/cast/${tmdbId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCast(response.data);

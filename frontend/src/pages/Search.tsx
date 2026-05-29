@@ -33,7 +33,7 @@ export default function Search() {
   const searchMovies = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:8000/movies/search", {
+      const response = await axios.get("hhttps://movie-tracker-backend-acc8.onrender.com/movies/search", {
         params: { query },
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -49,7 +49,7 @@ export default function Search() {
     setAddingId(movie.tmdb_id);
     try {
       await axios.post(
-        "http://localhost:8000/movies/",
+        "hhttps://movie-tracker-backend-acc8.onrender.com/movies/",
         {
           tmdb_id: movie.tmdb_id,
           title: movie.title,

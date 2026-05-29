@@ -17,7 +17,7 @@ export default function Login() {
       const formData = new FormData();
       formData.append("username", username);
       formData.append("password", password);
-      const response = await axios.post("http://localhost:8000/users/login", formData);
+      const response = await axios.post("hhttps://movie-tracker-backend-acc8.onrender.com/users/login", formData);
       login(response.data.access_token);
       navigate("/dashboard");
     } catch (err) {

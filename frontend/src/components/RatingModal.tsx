@@ -27,7 +27,7 @@ export default function RatingModal({ movie, onClose, onUpdate }: RatingModalPro
     setSubmitting(true);
     try {
       await axios.put(
-        `http://localhost:8000/movies/${movie.id}`,
+        `hhttps://movie-tracker-backend-acc8.onrender.com/movies/${movie.id}`,
         { rating: rating || null, comment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
