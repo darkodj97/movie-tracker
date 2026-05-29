@@ -33,7 +33,7 @@ export default function MovieCard({ movie, onDelete, onUpdate, onStatusChange }:
     e.stopPropagation();
     if (!window.confirm("Remove this movie?")) return;
     try {
-      await axios.delete(`hhttps://movie-tracker-backend-acc8.onrender.com/movies/${movie.id}`, {
+      await axios.delete(`https://movie-tracker-backend-acc8.onrender.com/movies/${movie.id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       onDelete(movie.id);
@@ -46,7 +46,7 @@ export default function MovieCard({ movie, onDelete, onUpdate, onStatusChange }:
     e.stopPropagation();
     try {
       await axios.put(
-        `hhttps://movie-tracker-backend-acc8.onrender.com/movies/${movie.id}`,
+        `https://movie-tracker-backend-acc8.onrender.com/movies/${movie.id}`,
         { status: "watched" },
         { headers: { Authorization: `Bearer ${token}` } }
       );
